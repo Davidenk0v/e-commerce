@@ -1,0 +1,60 @@
+server:
+  port: 8087
+
+spring:
+  application:
+    name: MESSAGING-SERVICE
+
+  datasource:
+    url: jdbc:postgresql://db-messaging:5437/messaging
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  cloud:
+    function:
+      definition: receiveProductMessage;receiveCartMessage;receiveInventoryMessage
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        receiveProductMessage-in-0:
+          destination: product-topic
+          group: product-consumer-group
+        receiveCartMessage-in-0:
+          destination: cart-topic
+          group: cart-consumer-group
+        receiveInventoryMessage-in-0:
+          destination: inventory-topic
+          group: inventory-consumer-group
+      default:
+        consumer:
+          autoStartup: true
+
+kafka:
+  bootstrap-servers: localhost:9092
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+
+gateway:
+  url: http://localhost:8080
+
+logging:
+  level:
+    org.springframework.cloud.stream: DEBUG
+    org.apache.kafka: WARN

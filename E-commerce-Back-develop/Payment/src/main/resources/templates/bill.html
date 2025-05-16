@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Resumen de factura</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        td, th {
+            border: 1px solid #ccc;
+            padding: 8px;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+        .total {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Factura nº: <span th:text="${bill.id}"></span></h1>
+    <p><strong>Pedido nº:</strong> <span th:text="${bill.order.id}"></span></p>
+    <p><strong>Cliente:</strong> <span th:text="${#strings.toUpperCase(bill.name)}"></span></p>
+    <p><strong>Fecha de expedición:</strong> <span th:text="${#temporals.format(bill.creationDate, 'dd MM yyyy')}"></span></p>
+	<p><strong>Marca tarjeta:</strong> <span th:text="${bill.cardBrand}"></span></p>
+	<p><strong>Tarjeta terminada en:</strong> <span th:text="${bill.cardNumber}"></span></p>
+	<p><strong>Fecha caducidad tarjeta:</strong> 
+		<span th:text="${bill.cardExpMonth} + '/' + ${bill.cardExpYear}"></span>
+	</p>
+	<p><strong>Dirección de facturación:</strong> 
+		<span th:text="${bill.street} + ', ' + ${bill.locality} + ', ' + ${bill.province} + ', ' + ${bill.cp} + ', ' + ${bill.country}"></span>
+	</p>
+	<p><strong>Total pagado: </strong><span th:text="${#numbers.formatCurrency(bill.amountReceived / 100.0)}"></span></p>
+		
+	<p><strong>Detalles de producto</strong></p>
+    <table>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+			<th>Precio</th>
+        </tr>
+		<tr th:each="orderDetail : ${bill.order.orderDetails}">
+		    <td th:text="${orderDetail.name}"></td>
+		    <td th:text="${orderDetail.quantity}"></td>
+			<td th:text="${#numbers.formatCurrency(orderDetail.price / 100.00)}"></td>
+		</tr>
+        <tr>
+            <td class="total" colspan="2">Total</td>
+            <td class="total" th:text="${#numbers.formatCurrency(bill.amountReceived / 100.0)}"></td>
+        </tr>
+    </table>
+</body>
+</html>

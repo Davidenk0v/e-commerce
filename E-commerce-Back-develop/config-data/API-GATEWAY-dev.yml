@@ -1,0 +1,56 @@
+server:
+  port: 8080
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8090/realms/e-commerce_realm
+          jwk-set-uri: http://localhost:8090/realms/e-commerce_realm/protocol/openid-connect/certs
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: CART-SERVICE
+          uri: lb://CART-SERVICE
+          predicates:
+            - Path=/api/v1/cart/**
+        - id: PRODUCT-SERVICE
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/v1/product/**
+
+jwt:
+  auth:
+    converter:
+      resource-id: e-commerce_client
+      principle-attribute: preferred_username
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    reactor.netty: INFO
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    org.springframework.boot.autoconfigure.web: DEBUG
+    org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE
+
+keycloakserver:
+  url: http://localhost:8090
+
+keycloak:
+  client:
+    secret: Gi43YTdIowhrAlGn0DMzAfguW0wM5YW1

@@ -1,0 +1,36 @@
+server:
+  address: 0.0.0.0
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:/config-data
+  profiles:
+    active: native
+
+logging:
+  level:
+    org.springframework.cloud: DEBUG
+    org.springframework.boot: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+#  cloud:
+#    config:
+#      server:
+#        git:
+#          uri: https://github.com/Davidenk0v/e-commerce-config
+#          default-label: main  # Asumiendo que la rama principal es 'main'
+#          # No es necesario especificar search-paths si los archivos est�n en la ra�z
+

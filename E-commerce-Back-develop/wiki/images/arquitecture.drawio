@@ -1,0 +1,144 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0" version="26.1.0">
+  <diagram name="Page-1" id="D7TZ1R0ghxPJYlwmy0IX">
+    <mxGraphModel dx="1426" dy="781" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="49fBX1sykJOyOZ_vITRp-56" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="120" width="740" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-45" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="145" width="410" height="430" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-5" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="140" y="170" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-4" value="Puerto: 8088" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=bottom;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-5">
+          <mxGeometry width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-2" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://www.pngkit.com/png/full/385-3854337_keycloak-logo-600px-keycloak-spring.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-5">
+          <mxGeometry x="7.200000000000003" y="18.333333333333332" width="145.6" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-44" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/en/thumb/d/dd/MySQL_logo.svg/100px-MySQL_logo.svg.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-5">
+          <mxGeometry x="51.739999999999995" y="48.33" width="56.52" height="39" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-6" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Architecture&lt;/h1&gt;&lt;p&gt;Cada servicio irá dockerizado en su propio contenedor y expondrá los puertos indicados. La monitorización expondrá una serie a determinar de puertos en función de la configuración final que se implemente.&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="810" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-39" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="419.99999999999994" y="313" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-15" value="Cart&lt;br&gt;&lt;div&gt;Puerto: 8084&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-39">
+          <mxGeometry width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-16" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://iu5bmstu.ru/images/thumb/5/5f/Postgresql_logo.png/240px-Postgresql_logo.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-39">
+          <mxGeometry x="9.409999999999968" y="70" width="141.18" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-17" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/220px-Spring_Framework_Logo_2018.svg.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-39">
+          <mxGeometry x="35" y="40" width="90" height="23.32" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-43" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="115" y="440" width="210" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-32" value="Kafka -&amp;nbsp;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Monitorizacion&lt;/span&gt;&lt;div&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Cluster - Puerto: 8089&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Schema Registry- Puerto: 8090&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;GUI - Puerto: 8091&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Monitorizcion - Puerto: 8092-8100&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-43">
+          <mxGeometry width="210" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-31" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Apache_Kafka_logo.svg/64px-Apache_Kafka_logo.svg.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-43">
+          <mxGeometry x="50" y="100.98000000000002" width="32.42" height="52.68" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-42" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Grafana_logo.svg/120px-Grafana_logo.svg.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-43">
+          <mxGeometry x="100" y="100.98000000000002" width="58.54" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-47" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="140" y="325" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-7" value="API Gateway&lt;div&gt;Puerto: 8081&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-47">
+          <mxGeometry width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-11" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/220px-Spring_Framework_Logo_2018.svg.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-47">
+          <mxGeometry x="35" y="40" width="90" height="23.32" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-38" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="420" y="443" width="160.00000000000006" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-21" value="Payment&lt;br&gt;&lt;div&gt;Puerto: 8085&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-38">
+          <mxGeometry width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-22" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://iu5bmstu.ru/images/thumb/5/5f/Postgresql_logo.png/240px-Postgresql_logo.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-38">
+          <mxGeometry x="9.409999999999968" y="70" width="141.18" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-23" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/220px-Spring_Framework_Logo_2018.svg.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-38">
+          <mxGeometry x="35" y="40" width="90" height="23.32" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-48" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="610" y="313" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-27" value="Messaging&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;Puerto: 8087&lt;/span&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-48">
+          <mxGeometry width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-29" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/220px-Spring_Framework_Logo_2018.svg.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-48">
+          <mxGeometry x="35" y="40" width="90" height="23.32" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-30" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/en/thumb/5/5a/MongoDB_Fores-Green.svg/250px-MongoDB_Fores-Green.svg.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-48">
+          <mxGeometry x="26.289999999999964" y="70" width="107.42" height="27.5" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-49" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="610" y="443" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-24" value="Delivery&lt;br&gt;&lt;div&gt;Puerto: 8086&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-49">
+          <mxGeometry width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-25" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://iu5bmstu.ru/images/thumb/5/5f/Postgresql_logo.png/240px-Postgresql_logo.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-49">
+          <mxGeometry x="9.409999999999968" y="70" width="141.18" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-26" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/220px-Spring_Framework_Logo_2018.svg.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-49">
+          <mxGeometry x="35" y="40" width="90" height="23.32" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="49fBX1sykJOyOZ_vITRp-51">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="140" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-51" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="20" y="330" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-54" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="49fBX1sykJOyOZ_vITRp-7" target="49fBX1sykJOyOZ_vITRp-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-62" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="420" y="163" width="160" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-46" value="" style="group" vertex="1" connectable="0" parent="49fBX1sykJOyOZ_vITRp-62">
+          <mxGeometry width="160" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-12" value="Product&lt;br&gt;&lt;div&gt;Puerto: 8082&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-46">
+          <mxGeometry width="160" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-13" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://iu5bmstu.ru/images/thumb/5/5f/Postgresql_logo.png/240px-Postgresql_logo.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-46">
+          <mxGeometry x="9.409999999999968" y="67.72727272727273" width="141.18" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-14" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/220px-Spring_Framework_Logo_2018.svg.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-46">
+          <mxGeometry x="35" y="39.27272727272727" width="90" height="23.32" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-60" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://min.io/resources/img/logo/MINIO_wordmark.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-62">
+          <mxGeometry x="25" y="101.72999999999996" width="110" height="16.59" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-64" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="49fBX1sykJOyOZ_vITRp-7" target="49fBX1sykJOyOZ_vITRp-45">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-65" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="610" y="183" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-18" value="Inventory&lt;br&gt;&lt;div&gt;Puerto: 8083&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;container=1;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-65">
+          <mxGeometry width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-19" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://iu5bmstu.ru/images/thumb/5/5f/Postgresql_logo.png/240px-Postgresql_logo.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-65">
+          <mxGeometry x="9.409999999999968" y="66.66" width="141.18" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="49fBX1sykJOyOZ_vITRp-20" value="" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/220px-Spring_Framework_Logo_2018.svg.png;" vertex="1" parent="49fBX1sykJOyOZ_vITRp-65">
+          <mxGeometry x="35" y="40.34" width="90" height="23.32" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

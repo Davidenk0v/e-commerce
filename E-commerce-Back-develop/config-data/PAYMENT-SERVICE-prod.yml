@@ -1,0 +1,44 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: PAYMENT-SERVICE
+
+  datasource:
+    url: jdbc:postgresql://db-payment:5432/payment
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /api-docs
+
+product:
+  url: http://product-service:8082
+
+inventory:
+  url: http://inventory-service:8083
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+
+stripe:
+  secret: "sk_test_51RHijZFLZ3B58QmMIolxMvZjn8k0PY5M11CsmB3cFSeqbsv5tOiDgI9L8F5FTf3aOEoMaUmVGrE3nVeGBteyVtxt00PuARRxcz"
+  public: "pk_test_51RHijZFLZ3B58QmMu6XtVKh535D08URYoOevUSscZEN0KO04Qf2Nh4rbqa5pRZpp2WCOW8MDhViSWR5fwIZ5V7PZ00RMXKRylW"

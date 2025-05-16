@@ -1,0 +1,257 @@
+networks:
+  keycloak_network:
+  app_network:
+
+services:
+  keycloak-mysql:
+    container_name: keycloak-mysql
+    image: mysql:8
+    volumes:
+      - ./API-Gateway/volume-data/mysql_keycloak_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: 1234
+    networks:
+      - keycloak_network
+
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:24.0.1
+    command: [ "start-dev", "--import-realm" ]
+    environment:
+      DB_VENDOR: MYSQL
+      DB_ADDR: keycloak-mysql
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: 1234
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_HEALTH_ENABLED: true
+    ports:
+      - "8090:8080"
+    volumes:
+      - ./API-Gateway/docker/keycloak/realms/:/opt/keycloak/data/import/
+    depends_on:
+      - keycloak-mysql
+    networks:
+      - keycloak_network
+      - app_network
+
+  db-cart:
+    container_name: db-cart
+    image: postgres:alpine
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: cart
+    networks:
+      - app_network
+    volumes:
+      - ./Cart/db-data-cart/:/var/lib/postgresql/data/
+
+  db-inventory:
+    container_name: db-inventory
+    image: postgres:alpine
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: inventory
+    networks:
+      - app_network 
+    volumes:
+      - ./Inventory/db-data-inventory/:/var/lib/postgresql/data/
+
+  db-payment:
+    container_name: db-payment
+    image: postgres:alpine
+    ports:
+      - "5436:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: payment 
+    networks:
+      - app_network
+    volumes:
+      - ./Payment/db-data-payment/:/var/lib/postgresql/data/
+
+  db-product:
+    container_name: db-product
+    image: postgres:alpine
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: product 
+    networks:
+      - app_network
+    volumes:
+      - ./Product/db-data-product/:/var/lib/postgresql/data/
+  
+  db-messaging:
+    container_name: db-messaging
+    image: postgres:alpine
+    ports:
+      - "5437:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: messaging 
+    networks:
+      - app_network
+    volumes:
+      - ./Messaging/db-data-messaging/:/var/lib/postgresql/data/
+
+  minio:
+    container_name: minio
+    image: quay.io/minio/minio:RELEASE.2022-02-18T01-50-10Z
+    volumes:
+      - ./Product/data:/data
+    ports:
+      - 9002:9002
+      - 9003:9003
+    environment:
+      MINIO_ROOT_USER: 'root'
+      MINIO_ROOT_PASSWORD: '12345678'
+      MINIO_ADDRESS: ':9002'
+      MINIO_CONSOLE_ADDRESS: ':9003'
+    networks:
+      - app_network
+    command: minio server /data
+
+  config-server:
+    container_name: config-server
+    build: 
+      context: ./config
+    ports:
+      - "8888:8888"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8888/actuator/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - app_network
+    volumes:
+      - ./config-data:/config-data
+
+  eureka-server:
+    container_name: eureka-server
+    build: 
+      context: ./eureka
+    ports:
+      - "8761:8761"
+    networks:
+      - app_network
+    environment:
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
+    depends_on:
+      config-server:
+        condition: service_healthy
+
+  cart-service:
+    container_name: cart-service
+    build: 
+      context: ./Cart
+    environment:
+      - SPRING_CLOUD_CONFIG_URI=http://config-server:8888
+    ports:
+      - "8084:8084"
+    depends_on:
+      config-server:
+        condition: service_healthy
+      db-cart:
+        condition: service_started
+      eureka-server:
+        condition: service_started
+    networks:
+      - app_network
+
+  api-gateway:
+    container_name: api-gateway
+    build: 
+      context: ./API-Gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      config-server:
+        condition: service_healthy
+      db-product:
+        condition: service_started
+      eureka-server:
+        condition: service_started
+    networks:
+      - app_network
+
+  inventory-service:
+    container_name: inventory-service
+    build: 
+      context: ./Inventory
+    ports:
+      - "8083:8083"
+    depends_on:
+      config-server:
+        condition: service_healthy
+      db-inventory:
+        condition: service_started
+      eureka-server:
+        condition: service_started
+    networks:
+      - app_network
+
+  payment-service:
+    container_name: payment-service
+    build: 
+      context: ./Payment
+    ports:
+      - "8085:8085"
+    depends_on:
+      config-server:
+        condition: service_healthy
+      db-payment:
+        condition: service_started
+      eureka-server:
+        condition: service_started
+    networks:
+      - app_network
+      
+  product-service:
+    container_name: product-service
+    build: 
+      context: ./Product
+    ports:
+      - "8082:8082"
+    depends_on:
+      config-server:
+        condition: service_healthy
+      db-product:
+        condition: service_started
+      eureka-server:
+        condition: service_started
+    networks:
+      - app_network
+
+  messaging-service:
+    container_name: messaging-service
+    build: 
+      context: ./Messaging
+    ports:
+      - "8087:8087"
+    depends_on:
+      config-server:
+        condition: service_healthy
+      db-messaging:
+        condition: service_started
+      eureka-server:
+        condition: service_started
+    networks:
+      - app_network
+      
